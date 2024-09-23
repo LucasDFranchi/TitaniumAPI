@@ -1,1 +1,1 @@
-docker run -it -v ./proto_out:/app/output protobuf-compiler
+docker run -it -v ./proto_out:/app/output protobuf-compiler --entrypoint=/bin/bash

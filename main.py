@@ -100,22 +100,3 @@ async def send_model(item_id: int, request: Request):
         raise HTTPException(status_code=500, detail="Failed to transmit model")
 
     return Response(content=serialized_model, media_type="application/octet-stream")
-   
-    
-    
-# # Update an item
-# @app.put("/items/{item_id}", response_model=Item)
-# def update_item(item_id: int, updated_item: Item):
-#     for index, item in enumerate(items):
-#         if item.id == item_id:
-#             items[index] = updated_item
-#             return updated_item
-#     return {"error": "Item not found"}
-
-# # Delete an item
-# @app.delete("/items/{item_id}", response_model=Item)
-# def delete_item(item_id: int):
-#     for index, item in enumerate(items):
-#         if item.id == item_id:
-#             return items.pop(index)
-#     return {"error": "Item not found"}

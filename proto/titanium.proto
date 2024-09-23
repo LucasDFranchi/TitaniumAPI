@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 
 import "nanopb.proto";
 
@@ -32,34 +32,34 @@ enum MemoryAreas {
 // Message representing the status of network connections.
 message NetworkInformation {
     // Status of the access point (AP) connection.
-    NetworkStatus ap_connected = 1;
+    required NetworkStatus ap_connected = 1;
 
     // Status of the station (STA) connection.
-    NetworkStatus sta_connected = 2;
+    required NetworkStatus sta_connected = 2;
 }
 
 // Message representing configuration details for the broker.
 message BrokerConfig {
     // URI of the broker to which the device will connect.
-    string broker_uri = 1 [(nanopb).max_size = 256];
+    required string broker_uri = 1 [(nanopb).max_size = 256];
 }
 
 // Message representing packet request, write to this area to read some area.
 message PacketRequest {
     // Specifies the address to which this packet should be sent.
-    int32 destination_address = 1;
+    required int32 destination_address = 1;
 
     // Specifies the area in the destination device that will store the received information.
-    MemoryAreas destination_area = 2;
+    required MemoryAreas destination_area = 2;
 
     // Specifies the area that should be sent to the destination device.
-    MemoryAreas requested_area = 3;
+    required MemoryAreas requested_area = 3;
 
     // Time interval (in milliseconds) between the packets.
-    uint32 packet_interval = 4;
+    required uint32 packet_interval = 4;
 
     // Time the last transmission occur
-    uint64 last_transmission = 5;
+    required uint64 last_transmission = 5;
 }
 
 // Message representing communication configuration including multiple packet configurations.
